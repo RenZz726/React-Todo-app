@@ -17,12 +17,13 @@ export default function Todo() {
           value={toDo}
           type="text"
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="bg-red">
+          Add
+        </button>
       </form>
-      {toDos.map((item)=> (
-        <TodoItem key={item} item={item}/>
+      {toDos.map((item) => (
+        <TodoItem key={item} item={item} />
       ))}
     </div>
   );
 }
-   
