@@ -1,20 +1,22 @@
 import { useState } from "react";
 export default function Form({ toDos, setTodos }) {
-  const [toDo, setTodo] = useState("");
+  const [toDo, setTodo] = useState({ name: "", done: false });
   function handleSubmit(e) {
     e.preventDefault();
+    let input = toDo.name.trim();
+    if (!input) return;
     setTodos([...toDos, toDo]);
-    setTodo("");
+    setTodo({ name: "", done: false });
   }
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-md p-6 w-3xl mx-auto my-20 shadow-md shadow-[rgba(0,0,0,0.2"
+      className="bg-white max-w-3xl rounded-md p-6 m-auto my-20 shadow-md shadow-[rgba(0,0,0,0.2)]"
     >
       <div className="flex">
         <input
-          onChange={(e) => setTodo(e.target.value)}
-          value={toDo}
+          onChange={(e) => setTodo({ ...toDo, name: e.target.value })}
+          value={toDo.name}
           type="text"
           placeholder="Enter todo items..."
           className="w-full block focus:outline-0 text-2xl"
